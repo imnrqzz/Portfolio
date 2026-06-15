@@ -1,3 +1,16 @@
+/* BASE */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #0f3460, #16213e, #1a1a2e);
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
 /* HEAD */
 .head {
     display: flex;
@@ -15,8 +28,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     padding: 20px;
-    gap: 20px;
+    gap: 16px;
     text-transform: uppercase;
 }
 
@@ -38,12 +52,14 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 0 16px;
 }
 
 .head-content h1 {
     font-size: 2.8rem;
     font-weight: 700;
     letter-spacing: -0.02em;
+    margin: 0;
 }
 
 .head-content p {
@@ -51,13 +67,7 @@
     color: #ffffffaa;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-}
-
-body {
     margin: 0;
-    padding: 0;
-    background: linear-gradient(180deg, #0f3460, #16213e, #1a1a2e);
-    min-height: 100vh;
 }
 
 /* BODY */
@@ -117,4 +127,80 @@ body {
     font-size: 0.95rem;
     color: #555;
     line-height: 1.6;
+}
+
+/* TABLET (max-width: 768px) */
+@media (max-width: 768px) {
+    .head-content h1 {
+        font-size: 2rem;
+    }
+
+    .head-content p {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .image-big-wrap img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .text-wrap {
+        text-align: center;
+    }
+}
+
+/* MOBILE (max-width: 480px) */
+@media (max-width: 480px) {
+    .head {
+        padding: 40px 16px;
+        gap: 24px;
+        min-height: 30vh;
+    }
+
+    .head-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .head-content p {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+    }
+
+    .nav {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .nav a {
+        font-size: 0.75rem;
+    }
+
+    .body {
+        padding: 40px 16px;
+    }
+
+    .card {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .image-big-wrap img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .text-wrap h2 {
+        font-size: 1.1rem;
+    }
+
+    .text-wrap p {
+        font-size: 0.85rem;
+    }
 }
