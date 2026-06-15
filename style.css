@@ -1,0 +1,120 @@
+/* HEAD */
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+    min-height: 40vh;
+    gap: 40px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    text-transform: uppercase;
+}
+
+.nav a {
+    color: #ffffffcc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+
+.head-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.head-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.head-content p {
+    font-size: 1rem;
+    color: #ffffffaa;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #0f3460, #16213e, #1a1a2e);
+    min-height: 100vh;
+}
+
+/* BODY */
+.body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+/* CARDS */
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    background-color: #c5bed8;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 700px;
+    gap: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.image-big-wrap img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.text-wrap {
+    text-align: left;
+}
+
+.text-wrap h2 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.text-wrap p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
