@@ -522,13 +522,12 @@
   <p class="reveal">A BSIT student and aspiring full-stack developer building clean, thoughtful digital experiences.</p>
   <p class="contact-hint reveal">Usually reply within a day &mdash; happy to talk roles or freelance.</p>
   <div class="reveal contact-form-wrap">
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="hidden"><label>Don't fill this: <input name="bot-field" /></label></p>
+    <form id="contact-form" method="POST">
       <input type="text" name="name" placeholder="Your name" required />
       <input type="email" name="email" placeholder="Your email" required />
       <textarea name="message" placeholder="Tell me about your project or role" required></textarea>
       <button type="submit" class="btn btn-gold">Send message</button>
+      <p id="form-status" class="contact-hint" style="margin-top:10px;"></p>
     </form>
   </div>
 </section>
@@ -609,6 +608,41 @@
   })();
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // contact form -> Vercel serverless function -> Gmail
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      const btn = form.querySelector('button[type="submit"]');
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value,
+      };
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.textContent = '';
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          status.textContent = 'Message sent! I will reply soon.';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong. Try emailing me directly.';
+        }
+      } catch (err) {
+        status.textContent = 'Something went wrong. Try emailing me directly.';
+      }
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  }
 </script>
 
 <!-- Privacy-friendly analytics: GoatCounter (free, no cookies, GDPR-friendly).
