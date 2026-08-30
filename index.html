@@ -159,6 +159,7 @@
   }
   .work:hover { transform: translateY(-6px); border-color: rgba(200,162,92,0.35); box-shadow: 0 12px 32px rgba(0,0,0,.15); }
   .work:hover::before { opacity: 1; }
+  .work-preview { width: 100%; height: 180px; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 18px; display: block; }
   .work-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
   .work-meta .yr { color: var(--gold); font-weight: 700; font-size: 14px; }
   .work-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
@@ -461,23 +462,26 @@
   <h2 class="sec-title reveal" style="text-align:center;">My Recent Works</h2>
   <div class="work-grid">
     <div class="work reveal" data-url="https://markanthonyenriquez.netlify.app/">
-      <div class="work-meta"><span class="yr">2023</span><div class="work-tags"><span>HTML</span><span>CSS</span></div></div>
-      <h3>Project Resume</h3>
-      <p>A personal resume website built with HTML and CSS, hosted on Netlify.</p>
-      <span class="work-link">View &nearr;</span>
-    </div>
-    <div class="work reveal" data-url="https://shoemarketingsystem.onrender.com/index.php">
-      <div class="work-meta"><span class="yr">2026</span><div class="work-tags"><span>PHP</span><span>MySQL</span><span>CSS</span><span>JavaScript</span></div></div>
-      <h3>Shoe Inventory System</h3>
-      <p>A web-based inventory system for a shoe business, handling stock, suppliers, transactions, and reports. I built it end to end as the head programmer. (v1 in progress)</p>
-      <span class="work-link">View &nearr;</span>
-    </div>
-    <div class="work reveal" data-url="https://github.com/imnrqzz">
-      <div class="work-meta"><span class="yr">Now</span><div class="work-tags"><span>Code</span></div></div>
-      <h3>More on GitHub</h3>
-      <p>Repos, experiments, and what I'm building next — open source and in progress.</p>
-      <span class="work-link">View profile &nearr;</span>
-    </div>
+          <img class="work-preview" src="assets/proj-resume.png" alt="Project Resume screenshot" loading="lazy" />
+          <div class="work-meta"><span class="yr">2023</span><div class="work-tags"><span>HTML</span><span>CSS</span></div></div>
+          <h3>Project Resume</h3>
+          <p>A personal resume website built with HTML and CSS, hosted on Netlify.</p>
+          <span class="work-link">View &nearr;</span>
+        </div>
+        <div class="work reveal" data-url="https://shoemarketingsystem.onrender.com/index.php">
+          <img class="work-preview" src="assets/proj-shoe.png" alt="Shoe Inventory System screenshot" loading="lazy" />
+          <div class="work-meta"><span class="yr">2026</span><div class="work-tags"><span>PHP</span><span>MySQL</span><span>CSS</span><span>JavaScript</span></div></div>
+          <h3>Shoe Inventory System</h3>
+          <p>A web-based inventory system for a shoe business, handling stock, suppliers, transactions, and reports. I built it end to end as the head programmer. (v1 in progress)</p>
+          <span class="work-link">View &nearr;</span>
+        </div>
+        <div class="work reveal" data-url="https://github.com/imnrqzz">
+          <img class="work-preview" src="assets/proj-github.png" alt="GitHub profile screenshot" loading="lazy" />
+          <div class="work-meta"><span class="yr">Now</span><div class="work-tags"><span>Code</span></div></div>
+          <h3>More on GitHub</h3>
+          <p>Repos, experiments, and what I'm building next — open source and in progress.</p>
+          <span class="work-link">View profile &nearr;</span>
+        </div>
   </div>
 </section>
 
@@ -653,10 +657,5 @@
   }
 </script>
 
-<!-- Privacy-friendly analytics: GoatCounter (free, no cookies, GDPR-friendly).
-     1) Sign up free at https://www.goatcounter.com
-     2) Replace YOURCODE below with the code you get (e.g. markp)
-     Until hosted + code set, this collects nothing. -->
-<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
