@@ -22,7 +22,7 @@ document.querySelectorAll('.work[data-url]').forEach(card => {
 });
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('in'); });
-}, { threshold: 0.12 });
+}, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 // close mobile menu after tapping a link
 document.querySelectorAll('.nav-center a, .nav-links-mobile a').forEach(a => a.addEventListener('click', () => {
   const t = document.getElementById('nav-toggle'); if (t) t.checked = false;
