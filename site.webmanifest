@@ -1,0 +1,16 @@
+{
+  "name": "Mark Anthony Enriquez — Portfolio",
+  "short_name": "Mark Enriquez",
+  "description": "Portfolio of Mark Anthony Enriquez, web developer and BSIT student.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0d16",
+  "theme_color": "#0b0d16",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
