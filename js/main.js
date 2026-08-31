@@ -1,10 +1,3 @@
-document.querySelectorAll('.work').forEach(c => {
-  c.addEventListener('mousemove', e => {
-    const r = c.getBoundingClientRect();
-    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
-});
 // Make entire project card clickable — opens in a NEW TAB, but skip if clicking a link/button
 document.querySelectorAll('.work[data-url]').forEach(card => {
   const url = card.getAttribute('data-url');
