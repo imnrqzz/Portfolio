@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imnrqzportfolio.vercel.app/sitemap.xml
+Sitemap: https://markenrportfolio.is-a.dev/sitemap.xml
