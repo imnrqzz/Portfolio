@@ -177,7 +177,6 @@
   .contact form input:focus, .contact form textarea:focus { outline: none; border-color: var(--gold); }
   .contact form textarea { min-height: 120px; }
   .contact form .btn { align-self: flex-start; }
-  .hidden { display: none; }
 
   footer { padding: 50px clamp(20px, 5vw, 64px); border-top: 1px solid var(--line); }
   .footer-top { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
@@ -248,7 +247,6 @@
     display: flex; align-items: center; gap: 12px;
   }
   .skill-item i { font-size: 24px; flex-shrink: 0; }
-  .skill-info { display: flex; flex-direction: column; min-width: 0; }
   .skill-name { font-weight: 700; font-size: 14px; color: var(--ink); }
   .honeypot { position: absolute !important; left: -9999px !important; opacity: 0; height: 0; width: 0; overflow: hidden; }
   .contact-hint { color: var(--ink-dim); font-size: 15px; margin: 20px auto 26px; max-width: 46ch; text-align: center; }
