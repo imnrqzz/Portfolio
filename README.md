@@ -33,8 +33,10 @@ portfolio/
 ├── css/
 │   ├── main.css          # Core styles, layout, theme
 │   └── animations.css    # Transitions, keyframes, reduced-motion
-└── js/
-    └── main.js           # Click handlers, theme toggle, reveal-on-scroll
+├── js/
+│   └── main.js           # Click handlers, theme toggle, reveal-on-scroll
+└── projects/
+    └── shoe-inventory-system.md  # Case study (source doc, not yet a page)
 ```
 
 ## Run Locally
