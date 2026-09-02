@@ -3,6 +3,24 @@
 Live: https://markenrportfolio.is-a.dev
 Repo: https://github.com/imnrqzz/Portfolio
 
+## Features
+
+- Dark/light mode with persistent theme toggle
+- Responsive layout (mobile-first, works on all screen sizes)
+- Contact form with honeypot spam protection, rate limiting, and Gmail delivery
+- IntersectionObserver scroll reveals with staggered animations
+- GitHub contributions graph with zoom on mobile
+- Semantic HTML, JSON-LD structured data, Open Graph meta tags
+- SEO: robots.txt, sitemap.xml, 404 page, PWA manifest
+- Serverless API (Vercel function) for contact form processing
+
+## Tech Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript (vanilla)
+- **Backend:** Node.js (Vercel serverless function + Nodemailer)
+- **Deployment:** Vercel (auto-deploy from GitHub)
+- **Domain:** is-a.dev (CNAME via Cloudflare proxy)
+
 ## Folder map
 
 ```
