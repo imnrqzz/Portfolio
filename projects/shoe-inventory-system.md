@@ -2,7 +2,8 @@
 
 **Role:** Head programmer, team of 5
 **Stack:** PHP, MySQL, JavaScript, HTML, CSS, React (storefront customizer)
-**Live:** https://shoemarketingsystem.onrender.com/index.php
+**Live:** https://inventorysole.free.nf/frontend/login.php
+**Demo account:** User: mark / Password: mark123
 **Repo:** https://github.com/imnrqzz/ShoeInventorySystem
 **Status:** v1 done, v2 in progress
 
