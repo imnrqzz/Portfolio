@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study: SoleHaus Storefront | Mark Anthony Enriquez</title>
+<meta name="description" content="Case study: fixing the SoleHaus storefront layer of the Shoe Inventory System — a dead store link, a 500 from a missing vendor folder, and silent handler failures." />
+<meta name="theme-color" content="#0b0d16" />
+<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/case-study.css" />
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Mark<span>.</span>Enriquez</a>
+  <div class="nav-center">
+    <a href="../index.html#works">Projects</a>
+    <a href="../index.html#certifications">Certifications</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<article class="case">
+  <a href="../index.html#works" class="case-back">&larr; Back to projects</a>
+
+  <div class="case-kicker">Case Study &middot; Solo</div>
+  <h1>SoleHaus Storefront</h1>
+  <p class="case-sub">The public storefront for the Shoe Inventory System. I diagnosed and fixed a broken entry point, a deployment 500, and silent handler failures &mdash; then hardened the store so it stays reachable.</p>
+
+  <div class="case-meta">
+    <div><span>Role</span><strong>Full-stack (solo)</strong></div>
+    <div><span>Stack</span><strong>PHP &middot; MySQL &middot; JS &middot; HTML &middot; CSS</strong></div>
+    <div><span>Status</span><strong>In progress</strong></div>
+  </div>
+
+  <div class="case-links">
+    <a href="https://inventorysole.free.nf/storefront/index.php?page=home" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">Live Demo &nearr;</a>
+    <a href="https://github.com/imnrqzz/ShoeInventorySystem" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub Repo</a>
+  </div>
+  <p style="color:var(--ink-dim);font-size:14px;margin-top:10px;">Built on the same inventory/transactions backend as the admin app.</p>
+
+  <section class="case-section">
+    <h2>The problem</h2>
+    <p>The Shoe Inventory System had an admin side and a storefront, but the storefront's public entry point was broken: clicking "Store" in the sidebar redirected visitors to the <em>admin</em> login instead of showing products. On top of that, the deployed build threw HTTP 500s because a required <code>vendor/</code> (PHPMailer) folder was never part of the upload, and the account-creation and transaction handlers failed silently (white screens) whenever the database raised an error. The store was effectively unreachable to customers.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>What the storefront does</h2>
+    <div class="case-grid">
+      <div class="item"><b>Product catalog</b> Brand filtering and search.</div>
+      <div class="item"><b>Shopping cart</b> Add/remove with subtotal.</div>
+      <div class="item"><b>Customer accounts</b> Email-verified sign-up (6-digit code).</div>
+      <div class="item"><b>Public pages</b> Home, brands, about, product, customizer.</div>
+      <div class="item"><b>Auth flow</b> Login / register / verify.</div>
+      <div class="item"><b>Shared backend</b> Same inventory + transactions as admin.</div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>My contribution</h2>
+    <p>As the sole developer on the storefront layer, I diagnosed and fixed the deployment and routing breakages:</p>
+    <div class="case-code">
+rewrote <code>storefront/index.php</code> &mdash; front-controller router for Home / Product / Cart / Auth<br>
+hardened <code>process_user.php</code> &mdash; validate, check duplicate, catch &amp; redirect<br>
+hardened <code>process_transaction.php</code> &mdash; check item/stock, then catch &amp; redirect<br>
+<code>bootstrap.php</code> &mdash; load <code>vendor/autoload.php</code> only if it exists<br>
+<code>AuthController</code> &mdash; drop hard PHPMailer <code>implements</code> at parse time
+    </div>
+
+    <div class="case-callout">
+      <div class="lbl">One architecture decision I made</div>
+      <p>I kept the existing controller-per-page structure and added a thin router in front of it, rather than rewriting every controller. The router maps <code>?page=home</code> &rarr; <code>HomeController::index()</code>, <code>?page=product&amp;id=</code> &rarr; <code>ProductController::show()</code>, and so on. That meant the fix was one new file plus small handler hardening &mdash; no controller rewrites, no risk to the working admin app.</p>
+      <p class="rejected"><strong>The alternative I rejected:</strong> a full SPA rewrite of the storefront. It would have looked cleaner but thrown away working, tested controllers and blown up the change surface for what was essentially a routing + hardening bug.</p>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>The hard part</h2>
+    <p>The silent failures. On the local repro the handlers actually succeeded against the shipped schema, so the live errors were environmental &mdash; most likely a duplicate username or a stock/lock edge case surfacing as an uncaught PDO exception that the server turned into a 500. The fix wasn't "make the query work," it was "make the failure observable and recoverable" so a bad input shows a message instead of a white screen. The missing-<code>vendor/</code> 500 was the same class of problem: a hard <code>require_once</code> of a file that wasn't in the upload.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>Result</h2>
+    <div class="case-stats">
+      <div class="stat"><div class="num">1</div><div class="lbl2">New router file</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl2">Vendor files required</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl2">Handlers hardened</div></div>
+    </div>
+    <p style="margin-top:18px;">A reachable, browseable storefront on InfinityFree: the "Store" link now lands on the catalog, customers can view products and cart, and account/transaction errors degrade to a visible message instead of crashing. All changes are committed in the ShoeInventorySystem repo.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>What I'd do differently</h2>
+    <p>Wire up the verification-email fallback properly &mdash; right now SMTP OAuth isn't configured, so registration completes but can't email the code. I'd add an on-screen code display (or a disabled-email mode) so the storefront is fully usable without SMTP credentials. I'd also add a <code>.htaccess</code> rule to hide <code>.php</code> extensions and backend paths from public URLs (tracked as a follow-up task).</p>
+  </section>
+</article>
+
+<footer class="case-foot">
+  <span>Mark Anthony Enriquez &middot; Web Developer</span>
+  <a href="../index.html#works">&larr; Back to all projects</a>
+</footer>
+
+</body>
+</html>

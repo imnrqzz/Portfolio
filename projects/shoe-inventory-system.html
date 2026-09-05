@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study: Shoe Inventory System | Mark Anthony Enriquez</title>
+<meta name="description" content="Case study: a production-style PHP/MySQL inventory system for a shoe business, built as head programmer on a team of 5." />
+<meta name="theme-color" content="#0b0d16" />
+<link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/case-study.css" />
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Mark<span>.</span>Enriquez</a>
+  <div class="nav-center">
+    <a href="../index.html#works">Projects</a>
+    <a href="../index.html#certifications">Certifications</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<article class="case">
+  <a href="../index.html#works" class="case-back">&larr; Back to projects</a>
+
+  <div class="case-kicker">Case Study &middot; Team of 5</div>
+  <h1>Shoe Inventory System</h1>
+  <p class="case-sub">A production-style inventory system for a shoe business &mdash; stock, suppliers, transactions, sales reporting, and a storefront &mdash; built with PHP/MySQL. I led a team of 5 as head programmer.</p>
+
+  <div class="case-meta">
+    <div><span>Role</span><strong>Head programmer (team of 5)</strong></div>
+    <div><span>Stack</span><strong>PHP &middot; MySQL &middot; JS &middot; HTML &middot; CSS &middot; React</strong></div>
+    <div><span>Status</span><strong>v1 done &middot; v2 in progress</strong></div>
+  </div>
+
+  <div class="case-links">
+    <a href="https://inventorysole.free.nf/frontend/login.php" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">Live Demo &nearr;</a>
+    <a href="https://github.com/imnrqzz/ShoeInventorySystem" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub Repo</a>
+  </div>
+  <p style="color:var(--ink-dim);font-size:14px;margin-top:10px;">Demo account &mdash; <strong style="color:var(--ink);">User: mark</strong> / <strong style="color:var(--ink);">Password: mark123</strong></p>
+
+  <section class="case-section">
+    <h2>The problem</h2>
+    <p>A shoe business needed one place to run the whole operation: track stock, manage suppliers, record transactions, and see what was selling. Before this, the pieces lived in separate files and spreadsheets, so nobody had a clear picture of inventory or sales.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>What the system does</h2>
+    <div class="case-grid">
+      <div class="item"><b>Inventory dashboard</b> Sales and stock insights at a glance.</div>
+      <div class="item"><b>Item &amp; variant management</b> Products with photo support.</div>
+      <div class="item"><b>Supplier management</b> Track who supplies what.</div>
+      <div class="item"><b>Transaction logging</b> Stock updates tied to every movement.</div>
+      <div class="item"><b>Role-based users</b> Admin and staff access tiers.</div>
+      <div class="item"><b>Sales reporting</b> Transaction history and trends.</div>
+      <div class="item"><b>Storefront</b> Catalog, search filtering, cart.</div>
+      <div class="item"><b>3D customizer</b> React/Vite shoe customizer.</div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>My contribution</h2>
+    <p>As head programmer on a team of 5, I built the full CRUD flows, search, auth, and sales reporting in PHP/MySQL:</p>
+    <div class="case-code">
+<code>api/</code> endpoint layer &mdash; auth, items, stock, restock, suppliers, transactions, users<br>
+<code>backend/Classes/</code> &mdash; Database, StockManager, ItemManager, SupplierManager, TransactionManager, UserManager<br>
+<code>backend/handlers/</code> &mdash; login, register, transaction, user action handlers<br>
+views &mdash; dashboard, items, stock, supplier, reports (each with own CSS)<br>
+image upload handling &amp; stock&ndash;to&ndash;item sync
+    </div>
+
+    <div class="case-callout">
+      <div class="lbl">One architecture decision I made</div>
+      <p>I organized the backend into manager classes with a separate API endpoint layer instead of writing SQL directly inside each page. The pattern: <strong>page &rarr; API endpoint &rarr; manager class &rarr; database</strong>. That kept views free of raw queries, so when the team needed a new feature (restock, variants), we added an endpoint + manager method instead of touching every page.</p>
+      <p class="rejected"><strong>The alternative I rejected:</strong> flat procedural scripts with SQL inline in each page. It would have shipped faster at first, but every feature would have meant editing multiple pages and repeating the same query logic. The class + API layer cost more upfront but made the rest of the project &mdash; and a 5-person team working in parallel &mdash; much safer to change.</p>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>The hard part</h2>
+    <p>The storefront's checkout and auth flow. The commit history shows this was the messiest area: CSRF token mismatches between sessions (fixed with a session-stable token), session cookie path collisions (cleared legacy path-restricted cookies), and strict auth guards redirecting to login. The registration email even broke page redirects once because of debug echo output. Those were the classic "works on my machine, breaks in the browser" problems &mdash; the data was fine, but session state and redirect behavior kept biting us until the token and cookie paths were handled properly.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>Result</h2>
+    <div class="case-stats">
+      <div class="stat"><div class="num">7</div><div class="lbl2">Manager classes</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl2">API endpoint groups</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl2">Person team, shipped</div></div>
+    </div>
+    <p style="margin-top:18px;">Shipped a working production-style system with a team of 5: 6 API endpoint groups (auth, items, stock, restock, suppliers, transactions, users), 7 manager classes, an admin dashboard covering stock/suppliers/users/sales, plus a storefront with cart, search, and a 3D customizer. All the core flows are committed in the repo with a full commit history &mdash; not a tutorial clone, a real system that runs live.</p>
+  </section>
+
+  <section class="case-section">
+    <h2>What I'd do differently (v2)</h2>
+    <p>Rebuilding v2 with a cleaner architecture. The v1 worked, but as it grew the coupling between some pages and the data layer got harder to change safely. v2 is about separating concerns properly and making the codebase easier to extend.</p>
+  </section>
+</article>
+
+<footer class="case-foot">
+  <span>Mark Anthony Enriquez &middot; Web Developer</span>
+  <a href="../index.html#works">&larr; Back to all projects</a>
+</footer>
+
+</body>
+</html>
